@@ -1,7 +1,7 @@
 require('dotenv').config({ path: './config.env' });
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+const { connectDB } = require('./config/db');
 
 const authRoutes = require('./routes/auth');
 const movieRoutes = require('./routes/movies');
@@ -24,10 +24,8 @@ app.use('/api/movies', movieRoutes);
 app.use('/api/watchlist', watchlistRoutes);
 app.use('/api/activity', activityRoutes);
 
-mongoose
-  .connect(process.env.MONGODB_URI)
+connectDB()
   .then(() => {
-    console.log('MongoDB connected');
     startConsumer();
     app.listen(PORT, () => console.log(`HeroStream API running on port ${PORT}`));
   })
