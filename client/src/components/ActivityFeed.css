@@ -1,0 +1,49 @@
+.activity-feed {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.activity-feed li {
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--accent);
+  animation: slideUp 0.4s ease backwards;
+}
+
+.activity-type {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.activity-feed p {
+  margin: 0.35rem 0;
+  font-size: 0.95rem;
+}
+
+.activity-feed time {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.activity-empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 2rem;
+}
+
+.activity-feed::-webkit-scrollbar {
+  width: 6px;
+}
+
+.activity-feed::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 3px;
+}

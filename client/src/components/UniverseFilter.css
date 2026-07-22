@@ -1,0 +1,40 @@
+.universe-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-chip {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all var(--transition);
+}
+
+.filter-chip:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.filter-chip.active {
+  color: white;
+}
+
+.filter-chip.active:not(.marvel):not(.dc) {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.filter-chip.marvel.active {
+  background: var(--marvel);
+  border-color: var(--marvel);
+}
+
+.filter-chip.dc.active {
+  background: var(--dc);
+  border-color: var(--dc);
+}

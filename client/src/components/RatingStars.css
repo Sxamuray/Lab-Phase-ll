@@ -1,0 +1,28 @@
+.rating-stars {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.rating-stars button {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.25rem;
+  padding: 0.1rem;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.rating-stars:not(.readonly) button:hover {
+  transform: scale(1.2);
+  color: #ffd700;
+}
+
+.rating-stars button.filled {
+  color: #ffd700;
+}
+
+.rating-value {
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: var(--muted);
+}

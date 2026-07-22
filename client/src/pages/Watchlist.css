@@ -1,0 +1,50 @@
+.auth-prompt {
+  text-align: center;
+}
+
+.auth-prompt p {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.watchlist-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  animation: slideUp 0.4s ease backwards;
+}
+
+.stat-card strong {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+}
+
+.stat-card span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.stat-card.marvel strong {
+  color: var(--marvel);
+}
+
+.stat-card.dc strong {
+  color: var(--dc);
+}
+
+@media (max-width: 480px) {
+  .watchlist-stats {
+    grid-template-columns: 1fr;
+  }
+}

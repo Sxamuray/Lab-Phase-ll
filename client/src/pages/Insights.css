@@ -1,0 +1,27 @@
+.insights-page .section-desc {
+  margin-bottom: 1.5rem;
+}
+
+.analytics-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.insights-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .insights-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
