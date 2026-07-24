@@ -8,6 +8,7 @@ const movieRoutes = require('./routes/movies');
 const watchlistRoutes = require('./routes/watchlist');
 const activityRoutes = require('./routes/activity');
 const { startConsumer } = require('./services/kafkaConsumer');
+const { seedIfEmpty } = require('./data/seedMovies');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,7 +26,8 @@ app.use('/api/watchlist', watchlistRoutes);
 app.use('/api/activity', activityRoutes);
 
 connectDB()
-  .then(() => {
+  .then(async () => {
+    await seedIfEmpty();
     startConsumer();
     app.listen(PORT, () => console.log(`HeroStream API running on port ${PORT}`));
   })

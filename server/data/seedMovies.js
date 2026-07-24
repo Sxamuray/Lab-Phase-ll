@@ -113,7 +113,25 @@ const movies = [
   },
 ];
 
+async function seedIfEmpty() {
+  const count = await Movie.countDocuments();
+  if (count > 0) return count;
+  await Movie.insertMany(movies);
+  console.log(`Seeded ${movies.length} movies`);
+  return movies.length;
+}
+
 async function seed() {
+  if (process.env.USE_MEMORY_DB === 'true') {
+    const { connectDB } = require('../config/db');
+    await connectDB();
+    await Movie.deleteMany({});
+    await Movie.insertMany(movies);
+    console.log(`Seeded ${movies.length} movies`);
+    await mongoose.disconnect();
+    return;
+  }
+
   await mongoose.connect(process.env.MONGODB_URI);
   await Movie.deleteMany({});
   await Movie.insertMany(movies);
@@ -121,7 +139,11 @@ async function seed() {
   await mongoose.disconnect();
 }
 
-seed().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+module.exports = { seedIfEmpty, movies };
+
+if (require.main === module) {
+  seed().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

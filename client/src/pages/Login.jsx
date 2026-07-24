@@ -24,6 +24,11 @@ export default function Login() {
         Welcome back
       </h1>
       <AuthForm mode="login" onSubmit={handleSubmit} error={error} />
+      <p style={{ textAlign: 'center', marginTop: '0.75rem' }}>
+        <Link to="/forgot-password" style={{ color: 'var(--accent)', fontSize: '0.9rem' }}>
+          Forgot password?
+        </Link>
+      </p>
       <p style={{ textAlign: 'center', marginTop: '1rem', color: 'var(--muted)' }}>
         No account? <Link to="/register">Sign up</Link>
       </p>

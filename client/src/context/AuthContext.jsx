@@ -23,16 +23,19 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     const { data } = await api.post('/auth/login', { email, password });
-    localStorage.setItem('herostream_token', data.token);
-    setUser(data.user);
+    setSession(data.token, data.user);
     return data.user;
   };
 
   const register = async (username, email, password) => {
     const { data } = await api.post('/auth/register', { username, email, password });
-    localStorage.setItem('herostream_token', data.token);
-    setUser(data.user);
+    setSession(data.token, data.user);
     return data.user;
+  };
+
+  const setSession = (token, userData) => {
+    localStorage.setItem('herostream_token', token);
+    setUser(userData);
   };
 
   const logout = () => {
@@ -41,7 +44,7 @@ export function AuthProvider({ children }) {
   };
 
   const value = useMemo(
-    () => ({ user, loading, login, register, logout, isAuthenticated: !!user }),
+    () => ({ user, loading, login, register, logout, setSession, isAuthenticated: !!user }),
     [user, loading]
   );
 
